@@ -18,6 +18,8 @@
 		1EF9DF8E18C1E1D400AC4318 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF9DF6D18C1E1D400AC4318 /* Cocoa.framework */; };
 		1EF9DF9618C1E1D400AC4318 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EF9DF9418C1E1D400AC4318 /* InfoPlist.strings */; };
 		1EF9DF9818C1E1D400AC4318 /* Service_Definitions_GUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF9DF9718C1E1D400AC4318 /* Service_Definitions_GUITests.m */; };
+		1EF9DFA518C1E4C200AC4318 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF9DFA318C1E4C200AC4318 /* MainViewController.m */; };
+		1EF9DFA618C1E4C200AC4318 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EF9DFA418C1E4C200AC4318 /* MainView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,9 @@
 		1EF9DF9318C1E1D400AC4318 /* Service Definitions GUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Service Definitions GUITests-Info.plist"; sourceTree = "<group>"; };
 		1EF9DF9518C1E1D400AC4318 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1EF9DF9718C1E1D400AC4318 /* Service_Definitions_GUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Service_Definitions_GUITests.m; sourceTree = "<group>"; };
+		1EF9DFA218C1E4C200AC4318 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = GUI/MainViewController.h; sourceTree = "<group>"; };
+		1EF9DFA318C1E4C200AC4318 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = GUI/MainViewController.m; sourceTree = "<group>"; };
+		1EF9DFA418C1E4C200AC4318 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainView.xib; path = GUI/MainView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +120,8 @@
 		1EF9DF7318C1E1D400AC4318 /* Service Definitions GUI */ = {
 			isa = PBXGroup;
 			children = (
+				1EF9DFA718C2217700AC4318 /* Model */,
+				1EF9DFA118C1E49A00AC4318 /* GUI */,
 				1EF9DF7F18C1E1D400AC4318 /* AppDelegate.h */,
 				1EF9DF8018C1E1D400AC4318 /* AppDelegate.m */,
 				1EF9DF8218C1E1D400AC4318 /* MainMenu.xib */,
@@ -152,6 +159,23 @@
 				1EF9DF9418C1E1D400AC4318 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1EF9DFA118C1E49A00AC4318 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				1EF9DFA218C1E4C200AC4318 /* MainViewController.h */,
+				1EF9DFA318C1E4C200AC4318 /* MainViewController.m */,
+				1EF9DFA418C1E4C200AC4318 /* MainView.xib */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
+		1EF9DFA718C2217700AC4318 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +256,7 @@
 			files = (
 				1EF9DF7818C1E1D400AC4318 /* InfoPlist.strings in Resources */,
 				1EF9DF8618C1E1D400AC4318 /* Images.xcassets in Resources */,
+				1EF9DFA618C1E4C200AC4318 /* MainView.xib in Resources */,
 				1EF9DF7E18C1E1D400AC4318 /* Credits.rtf in Resources */,
 				1EF9DF8418C1E1D400AC4318 /* MainMenu.xib in Resources */,
 			);
@@ -253,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EF9DF8118C1E1D400AC4318 /* AppDelegate.m in Sources */,
+				1EF9DFA518C1E4C200AC4318 /* MainViewController.m in Sources */,
 				1EF9DF7A18C1E1D400AC4318 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
