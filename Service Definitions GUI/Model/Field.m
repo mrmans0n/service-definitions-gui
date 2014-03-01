@@ -10,4 +10,18 @@
 
 @implementation Field
 
+- (id)initWithRXMLElement:(RXMLElement*)xmlElement {
+    self = [super init];
+    if (self) {
+        self.name = [xmlElement attribute:@"name"];
+        self.description = [xmlElement attribute:@"description"];
+        self.serviceName = [xmlElement attribute:@"serviceName"];
+        self.type = [xmlElement attribute:@"type"];
+    }
+    return self;
+}
+
++ (Field*)createFromRXMLElement:(RXMLElement*)xmlElement {
+    return [[Field alloc] initWithRXMLElement:xmlElement];
+}
 @end

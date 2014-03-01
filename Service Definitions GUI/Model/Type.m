@@ -13,7 +13,15 @@
 - (id)initWithRXMLElement:(RXMLElement*)xmlElement {
     self = [super init];
     if (self) {
-        // TODO: nlopez: custom initialization
+        // TODO: nlopez: beware of the typeRef attribute crap
+        self.name = [xmlElement attribute:@"name"];
+        self.description = [xmlElement attribute:@"description"];
+        NSArray *fieldNodesArray = [xmlElement children:@"field"];
+        NSMutableArray *tempNodes = [NSMutableArray new];
+        for (RXMLElement *fieldNode in fieldNodesArray) {
+            [tempNodes addObject:[Field createFromRXMLElement:fieldNode]];
+        }
+        self.fields = [NSArray arrayWithArray:tempNodes];
     }
     return self;
 }

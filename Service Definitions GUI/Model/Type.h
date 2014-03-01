@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RXMLElement.h"
+#import "Field.h"
 
 @interface Type : NSObject
 

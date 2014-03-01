@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RXMLElement.h"
 
 @interface Field : NSObject
 
@@ -14,5 +15,8 @@
 @property (nonatomic, strong) NSString *serviceName;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *description;
+
+- (id)initWithRXMLElement:(RXMLElement*)xmlElement;
++ (Field*)createFromRXMLElement:(RXMLElement*)xmlElement;
 
 @end
