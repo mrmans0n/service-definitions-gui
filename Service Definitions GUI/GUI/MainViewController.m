@@ -9,7 +9,10 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-@property (weak) IBOutlet NSOutlineView *outlineView;
+
+@property (nonatomic, strong) NSArray *messageArray;
+@property (nonatomic, strong) NSArray *typeArray;
+
 @end
 
 @implementation MainViewController
@@ -23,57 +26,34 @@
     return self;
 }
 
-- (void)awakeFromNib {
-    [self.outlineView setDataSource:self];
-    [self.outlineView setDelegate:self];
-    [[[self.outlineView tableColumns] objectAtIndex:0] setIdentifier:@"name"];
-    [[[self.outlineView tableColumns] objectAtIndex:1] setIdentifier:@"description"];
+- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
+	if ([item.representedObject isGroup]) {
+		return [outlineView makeViewWithIdentifier:@"HeaderCell" owner:self];
+	}
+	return [outlineView makeViewWithIdentifier:@"DataCell" owner:self];
 }
 
-
-
-// Method returns count of children for given tree node item
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id) item {
-    if ([item respondsToSelector:@selector(namedFields)]) {
-        NSDictionary *valuesForItem = [item namedFields];
-        return [valuesForItem count];
-    } else {
-        return 0;
-    }
+- (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(NSTreeNode*)item {
+	return [item.representedObject isGroup];
 }
 
-// Method returns flag, whether we can expand given tree node item or not
-// (here is the simple rule, we can expand only nodes having one and more children)
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    if ([item respondsToSelector:@selector(isLeaf)]) {
-        return [item isLeaf];
-    } else {
-        return NO;
-    }
-}
-
-// Method returns value to be shown for given column of the tree node item
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-    if ([item respondsToSelector:@selector(namedFields)]) {
-        NSDictionary *valuesForItem = [item namedFields];
-        return [valuesForItem objectForKey:[tableColumn identifier]];
-    } else {
-        return nil;
-    }
-}
-
-// Method returns children item for given tree node item by given index
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    if ([item respondsToSelector:@selector(namedFields)]) {
-        NSArray *keys = [[item namedFields] allKeys];
-        id aKey = [keys objectAtIndex:index];
-        return [[item namedFields] objectForKey:aKey];
-    } else {
-        return nil;
-    }
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(NSTreeNode*)item {
+	return ![item.representedObject isGroup];
 }
 
 - (void)refreshLoadedFile {
     // TODO: ?
+    self.messageArray = [[DefinitionLogic sharedInstance] messages];
+    self.typeArray = [[DefinitionLogic sharedInstance] types];
+    BrowserItem *messages = [BrowserItem itemWithTitle:@"Messages"];
+    messages.childItemTitleKeypath = @"name";
+    [messages bindChildItemsToArrayKeypath:@"self.messageArray" onObject:self];
+    
+    BrowserItem *types = [BrowserItem itemWithTitle:@"Types"];
+    types.childItemTitleKeypath = @"name";
+    [types bindChildItemsToArrayKeypath:@"self.typeArray" onObject:self];
+
+    
+    self.sidebarItems = @[messages, types];
 }
 @end

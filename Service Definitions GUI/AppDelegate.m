@@ -47,6 +47,7 @@
         
         [self.window.contentView addSubview:self.mainViewController.view];
         self.mainViewController.view.frame = ((NSView*)self.window.contentView).bounds;
+        [self.mainViewController refreshLoadedFile];
     }
     [alert runModal];
 }

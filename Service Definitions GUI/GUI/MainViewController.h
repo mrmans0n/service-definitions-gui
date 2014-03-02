@@ -10,9 +10,12 @@
 #import "Message.h"
 #import "Type.h"
 #import "Field.h"
-#import "NSString+OutlineNode.h"
+#import "BrowserItem.h"
+#import "DefinitionLogic.h"
 
 @interface MainViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate>
+
+@property (nonatomic, strong) NSArray *sidebarItems;
 
 - (void)refreshLoadedFile;
 
