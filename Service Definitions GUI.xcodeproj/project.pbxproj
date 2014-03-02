@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1E1E45AC18C22E5A00AC4DCB /* DefinitionLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E45AB18C22E5A00AC4DCB /* DefinitionLogic.m */; };
+		1E7480F818C353A20067CEF8 /* NSObject+OutlineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7480F718C353A20067CEF8 /* NSObject+OutlineNode.m */; };
+		1E7480FC18C356030067CEF8 /* NSString+OutlineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7480FB18C356030067CEF8 /* NSString+OutlineNode.m */; };
 		1EEC72D018C237D900988766 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEC72CF18C237D900988766 /* Message.m */; };
 		1EEC72D318C237F700988766 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEC72D218C237F700988766 /* Type.m */; };
 		1EEC72D618C2388B00988766 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEC72D518C2388B00988766 /* Field.m */; };
@@ -40,6 +42,10 @@
 /* Begin PBXFileReference section */
 		1E1E45AA18C22E5A00AC4DCB /* DefinitionLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefinitionLogic.h; path = Model/DefinitionLogic.h; sourceTree = "<group>"; };
 		1E1E45AB18C22E5A00AC4DCB /* DefinitionLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefinitionLogic.m; path = Model/DefinitionLogic.m; sourceTree = "<group>"; };
+		1E7480F618C353A20067CEF8 /* NSObject+OutlineNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+OutlineNode.h"; path = "Service Definitions GUI/Categories/NSObject+OutlineNode.h"; sourceTree = "<group>"; };
+		1E7480F718C353A20067CEF8 /* NSObject+OutlineNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+OutlineNode.m"; path = "Service Definitions GUI/Categories/NSObject+OutlineNode.m"; sourceTree = "<group>"; };
+		1E7480FA18C356030067CEF8 /* NSString+OutlineNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+OutlineNode.h"; path = "Service Definitions GUI/Categories/NSString+OutlineNode.h"; sourceTree = "<group>"; };
+		1E7480FB18C356030067CEF8 /* NSString+OutlineNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+OutlineNode.m"; path = "Service Definitions GUI/Categories/NSString+OutlineNode.m"; sourceTree = "<group>"; };
 		1EEC72CE18C237D900988766 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = Model/Message.h; sourceTree = "<group>"; };
 		1EEC72CF18C237D900988766 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = Model/Message.m; sourceTree = "<group>"; };
 		1EEC72D118C237F700988766 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Type.h; path = Model/Type.h; sourceTree = "<group>"; };
@@ -94,6 +100,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E7480F918C353A90067CEF8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1E7480F618C353A20067CEF8 /* NSObject+OutlineNode.h */,
+				1E7480F718C353A20067CEF8 /* NSObject+OutlineNode.m */,
+				1E7480FA18C356030067CEF8 /* NSString+OutlineNode.h */,
+				1E7480FB18C356030067CEF8 /* NSString+OutlineNode.m */,
+			);
+			name = Categories;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		1EF9DF6118C1E1D400AC4318 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +156,7 @@
 		1EF9DF7318C1E1D400AC4318 /* Service Definitions GUI */ = {
 			isa = PBXGroup;
 			children = (
+				1E7480F918C353A90067CEF8 /* Categories */,
 				1EF9DFA718C2217700AC4318 /* Model */,
 				1EF9DFA118C1E49A00AC4318 /* GUI */,
 				1EF9DF7F18C1E1D400AC4318 /* AppDelegate.h */,
@@ -340,9 +359,11 @@
 			files = (
 				1EEC72D618C2388B00988766 /* Field.m in Sources */,
 				1EF9DF8118C1E1D400AC4318 /* AppDelegate.m in Sources */,
+				1E7480F818C353A20067CEF8 /* NSObject+OutlineNode.m in Sources */,
 				1EEC72D318C237F700988766 /* Type.m in Sources */,
 				1EF9DFA518C1E4C200AC4318 /* MainViewController.m in Sources */,
 				1EEC72D018C237D900988766 /* Message.m in Sources */,
+				1E7480FC18C356030067CEF8 /* NSString+OutlineNode.m in Sources */,
 				1EF9DF7A18C1E1D400AC4318 /* main.m in Sources */,
 				1E1E45AC18C22E5A00AC4DCB /* DefinitionLogic.m in Sources */,
 			);

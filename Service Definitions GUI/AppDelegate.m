@@ -14,10 +14,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
-    
-    [self.window.contentView addSubview:self.mainViewController.view];
-    self.mainViewController.view.frame = ((NSView*)self.window.contentView).bounds;
 }
 
 - (void)openDocument:(id)shit {
@@ -37,9 +33,22 @@
 }
 
 - (void)loadXML:(NSURL*)filePath {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"OK"];
     if (![[DefinitionLogic sharedInstance] loadFromFile:filePath]) {
-        NSLog(@"Error opening file");
+        [alert setMessageText:@"Error"];
+        [alert setInformativeText:@"Service Definitions file could not be opened. Please check its syntax and use some linter in it first."];
+        [alert setAlertStyle:NSWarningAlertStyle];
+    } else {
+        [alert setMessageText:@"File opened!"];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        
+        self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
+        
+        [self.window.contentView addSubview:self.mainViewController.view];
+        self.mainViewController.view.frame = ((NSView*)self.window.contentView).bounds;
     }
+    [alert runModal];
 }
 
 @end

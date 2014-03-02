@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RXMLElement.h"
+#import "NSObject+OutlineNode.h"
 
 @interface Field : NSObject
 

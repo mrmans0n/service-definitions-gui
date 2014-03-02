@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-
+@property (weak) IBOutlet NSOutlineView *outlineView;
 @end
 
 @implementation MainViewController
@@ -25,26 +25,55 @@
 
 - (void)awakeFromNib {
     [self.outlineView setDataSource:self];
+    [self.outlineView setDelegate:self];
+    [[[self.outlineView tableColumns] objectAtIndex:0] setIdentifier:@"name"];
+    [[[self.outlineView tableColumns] objectAtIndex:1] setIdentifier:@"description"];
 }
+
+
 
 // Method returns count of children for given tree node item
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id) item {
-    return 1;
+    if ([item respondsToSelector:@selector(namedFields)]) {
+        NSDictionary *valuesForItem = [item namedFields];
+        return [valuesForItem count];
+    } else {
+        return 0;
+    }
 }
 
 // Method returns flag, whether we can expand given tree node item or not
 // (here is the simple rule, we can expand only nodes having one and more children)
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    return false;
+    if ([item respondsToSelector:@selector(isLeaf)]) {
+        return [item isLeaf];
+    } else {
+        return NO;
+    }
 }
 
 // Method returns value to be shown for given column of the tree node item
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-    return @"LALA";
+    if ([item respondsToSelector:@selector(namedFields)]) {
+        NSDictionary *valuesForItem = [item namedFields];
+        return [valuesForItem objectForKey:[tableColumn identifier]];
+    } else {
+        return nil;
+    }
 }
 
 // Method returns children item for given tree node item by given index
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    return nil;
+    if ([item respondsToSelector:@selector(namedFields)]) {
+        NSArray *keys = [[item namedFields] allKeys];
+        id aKey = [keys objectAtIndex:index];
+        return [[item namedFields] objectForKey:aKey];
+    } else {
+        return nil;
+    }
+}
+
+- (void)refreshLoadedFile {
+    // TODO: ?
 }
 @end

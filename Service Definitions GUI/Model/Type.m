@@ -16,6 +16,8 @@
         // TODO: nlopez: beware of the typeRef attribute crap
         self.name = [xmlElement attribute:@"name"];
         self.description = [xmlElement attribute:@"description"];
+        NSString *typeRef = [xmlElement attribute:@"typeRef"];
+        self.typeRef = typeRef? [[typeRef lowercaseString] isEqualToString:@"true"] : false;
         NSArray *fieldNodesArray = [xmlElement children:@"field"];
         NSMutableArray *tempNodes = [NSMutableArray new];
         for (RXMLElement *fieldNode in fieldNodesArray) {
@@ -28,6 +30,21 @@
 
 + (Type*)createFromRXMLElement:(RXMLElement*)xmlElement {
     return [[Type alloc] initWithRXMLElement:xmlElement];
+}
+
+@end
+
+@implementation Type (OutlineNode)
+
+- (NSDictionary*)namedFields {
+    return @{@"name" : self.name,
+             @"description" : self.description,
+             @"fields" : self.fields,
+             @"typeRef" : [NSNumber numberWithBool:self.typeRef]};
+}
+
+- (BOOL)isLeaf {
+    return NO;
 }
 
 @end

@@ -34,8 +34,8 @@
         return NO;
     }
     // Maybe do something with description??
-    [self loadMessages:[rootXML child:@"messages"]];
     [self loadTypes:[rootXML child:@"types"]];
+    [self loadMessages:[rootXML child:@"messages"]];
     return YES;
 }
 

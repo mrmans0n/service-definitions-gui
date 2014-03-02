@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Type.h"
 #import "RXMLElement.h"
+#import "NSObject+OutlineNode.h"
 
 @interface Message : NSObject
 

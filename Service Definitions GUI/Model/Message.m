@@ -28,4 +28,24 @@
 + (Message*)createFromRXMLElement:(RXMLElement*)xmlElement {
     return [[Message alloc] initWithRXMLElement:xmlElement];
 }
+
+@end
+
+@implementation Message (OutlineNode)
+
+- (NSDictionary*)namedFields {
+    return @{@"name" : self.name,
+             @"description" : self.description,
+             @"service" : self.service,
+             @"method" : self.method,
+             @"verb" : self.verb,
+             @"url" : self.urlAddress,
+             @"request" : self.request,
+             @"response" : self.response};
+}
+
+- (BOOL)isLeaf {
+    return NO;
+}
+
 @end

@@ -7,8 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Message.h"
+#import "Type.h"
+#import "Field.h"
+#import "NSString+OutlineNode.h"
 
-@interface MainViewController : NSViewController<NSOutlineViewDataSource>
-@property (weak) IBOutlet NSOutlineView *outlineView;
+@interface MainViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate>
+
+- (void)refreshLoadedFile;
 
 @end

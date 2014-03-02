@@ -25,3 +25,19 @@
     return [[Field alloc] initWithRXMLElement:xmlElement];
 }
 @end
+
+
+@implementation Field (OutlineNode)
+
+- (NSDictionary*)namedFields {
+    return @{@"name" : self.name,
+             @"description" : self.description,
+             @"type" : self.type,
+             @"serviceName" : self.serviceName};
+}
+
+- (BOOL)isLeaf {
+    return NO;
+}
+
+@end
